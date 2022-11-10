@@ -1,0 +1,53 @@
+const tiles = [
+  [1, 1],
+  [2, 2],
+  [3, 3],
+  [4, 4],
+];
+
+function Solve(n, m) {
+  // console.log(m, n);
+  if (n <= 0 || m <= 0) {
+    return 0;
+  }
+  // console.log('MAx');
+
+  for (let i = 0; i < tiles.length; i++) {
+    const x = tiles[i][0];
+    const y = tiles[i][1];
+
+    // console.log('x', x);
+
+    if (n === x && m === y) {
+      return 1;
+    }
+  }
+
+  // console.log('After check');
+
+  let r1 = Number.POSITIVE_INFINITY;
+  let r2 = Number.POSITIVE_INFINITY;
+  let min = Number.POSITIVE_INFINITY;
+
+  // console.log('Start');
+
+  for (let i = 0; i < tiles.length; i++) {
+    const x = tiles[i][0];
+    // console.log('x', x);
+    if (x <= Math.min(n, m)) {
+      r1 = Solve(n, m - x) + Solve(n - x, x);
+      r2 = Solve(n - x, m) + Solve(x, m - x);
+
+      min = Math.min(r1, Math.min(r2, min));
+    }
+  }
+  // console.log('End');
+
+  // console.log(r1, r2, min);
+
+  return min + 1;
+}
+
+const res = Solve(8, 3);
+
+console.log(res);

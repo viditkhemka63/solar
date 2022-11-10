@@ -1,0 +1,103 @@
+const tiles = [
+  [1, 1],
+  [2, 2],
+  [3, 2],
+  [4, 2],
+];
+
+// function findMinIndex(a, b, c) {
+//   let index = NaN;
+
+//   const min = a < b ? a : b;
+
+//   if (a < b) {
+//     index = 1;
+//   } else {
+//     index = 2;
+//   }
+
+//   if (min > c) {
+//     index = 3;
+//   }
+
+//   return index;
+// }
+
+function Solve(n, m) {
+  // console.log(m, n);
+  if (n <= 0 || m <= 0) {
+    return 0;
+  }
+  // console.log('MAx');
+
+  for (let i = 0; i < tiles.length; i++) {
+    const x = tiles[i][0];
+    const y = tiles[i][1];
+
+    // console.log('x', x);
+
+    if ((n === x && m === y) || (n === y && m === x)) {
+      return 1;
+    }
+  }
+
+  // console.log('After check');
+
+  let r1 = Number.POSITIVE_INFINITY;
+  let r2 = Number.POSITIVE_INFINITY;
+  let min = Number.POSITIVE_INFINITY;
+
+  // console.log('Start');
+  const minMatrix = null;
+
+  for (let i = 0; i < tiles.length; i++) {
+    const x = tiles[i][0];
+    const y = tiles[i][1];
+
+    if (x <= Math.min(n, m) && y <= Math.min(n, m)) {
+      r1 = Math.min(
+        Solve(n, m - x) + Solve(n - y, x),
+        Solve(n, m - y) + Solve(n - x, y)
+      );
+
+      r2 = Math.min(
+        Solve(y, m - x) + Solve(n - y, m),
+        Solve(x, m - y) + Solve(n - x, m)
+      );
+
+      min = Math.min(r1, Math.min(r2, min));
+
+      // const minIndex = findMinIndex(r1, r2, min);
+
+      // switch (minIndex) {
+      //   case 1:
+      //     minMatrix = ;
+      //     break;
+
+      //   case 2:
+      //     minMatrix = null;
+      //     break;
+
+      //   case 3:
+      //     minMatrix = null;
+      //     break;
+
+      //   default:
+      //     break;
+      // }
+    }
+  }
+  // console.log('End');
+
+  // if (min === Number.POSITIVE_INFINITY) {
+  //   return 0;
+  // }
+
+  // console.log(r1, r2, min);
+
+  return min + 1;
+}
+
+const res = Solve(8, 3);
+
+console.log(res);

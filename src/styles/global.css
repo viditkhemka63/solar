@@ -1,3 +1,5 @@
+
+
 @tailwind base;
 
 a {
@@ -18,4 +20,77 @@ a:hover {
 
 .content ul {
   @apply my-6;
+}
+
+h1{
+  font-size: 24px;
+}
+.container{
+  width: 1000px;
+  margin: 50px auto;
+
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar{
+  width: 500px;
+  /* border-right: 1px solid gray; */
+  
+}
+
+
+.input-form{
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px 5px; 
+}
+
+.box{
+  background: rgb(0, 146, 255);
+  padding: 8px 0px;
+
+  border: 1px solid  #fff;;
+  
+  height: auto;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #fff;
+  text-align: center;
+  border-radius: 0;
+}
+
+.panels-contaienr{
+  width: 100%;
+}
+
+.panels-contaienr .panel{
+
+    background-color: #f5f5f5;
+    border: 1px solid #bdbdbd;
+    padding: 20px;
+    margin: 10px 0px;
+}  
+
+
+.result{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(100vh - 100px);
+  width: 100%;
+
+
+}
+
+.result .value{
+  font-size: 56px;
+
 }
